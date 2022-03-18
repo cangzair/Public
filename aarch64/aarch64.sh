@@ -51,7 +51,7 @@ rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd77
 echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
-curl -fsSL 
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/shadowsocksr.lua ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
