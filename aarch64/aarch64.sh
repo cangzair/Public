@@ -42,23 +42,26 @@ sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_gener
 TIME b "修改 主机名为 N1"
 sed -i "s/'OpenWrt'/'N1'/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
+echo
+TIME y "添加自定义配置"
+rm -rf files && svn co https://github.com/cangzair/Public/trunk/aarch64/files && chmod -R 755 files
 echo
 TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
 echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/shadowsocksr.lua ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/shadowsocksr.lua > ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/passwall.lua ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/passwall.lua > ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
 echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
@@ -133,7 +136,7 @@ sed -i 's/MWAN3 分流助手/分流助手/g' feeds/luci/applications/luci-app-mw
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/实时流量监测/流量监测/g' feeds/luci/applications/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po
 TIME b "重命名 完成"
-#sed -i 's/invalid/## invalid/g' feeds/packages/net/samba4/files/smb.conf.template
+sed -i 's/invalid/## invalid/g' feeds/packages/net/samba4/files/smb.conf.template
 echo
 TIME b "菜单调整..."
 TIME b "调整 网络共享 到 存储菜单"
@@ -193,5 +196,5 @@ TIME g "自定义文件修复权限"
 chmod -R 755 package/gd772
 echo
 TIME g "更新配置..."
-./scripts/feeds update -i
+./scripts/feeds update -a && ./scripts/feeds install -a
 TIME g "配置更新完成"
