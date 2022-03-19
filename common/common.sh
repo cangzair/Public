@@ -102,9 +102,9 @@ elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
 	cp -Rf "${Home}"/build/common/MORTAL/files "${Home}"
 	cp -Rf "${Home}"/build/common/MORTAL/diy/* "${Home}"
 	cp -Rf "${Home}"/build/common/MORTAL/patches/* "${PATH1}/patches"
-	chmod -R 777 ${Home}/build/common/Convert
-	cp -Rf ${Home}/build/common/Convert/* "${Home}"
-	/bin/bash Convert.sh
+	#chmod -R 777 ${Home}/build/common/Convert
+	#cp -Rf ${Home}/build/common/Convert/* "${Home}"
+	#/bin/bash Convert.sh
 fi
 if [ -n "$(ls -A "${PATH1}/diy" 2>/dev/null)" ]; then
 	cp -Rf "${PATH1}"/diy/* "${Home}"
