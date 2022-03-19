@@ -45,9 +45,9 @@ TIME b "修改 系统文件..."
 curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
-echo
-TIME y "添加自定义配置"
-rm -rf files && svn co https://github.com/cangzair/Public/trunk/aarch64/files && chmod -R 755 files
+#echo
+#TIME y "添加自定义配置"
+#rm -rf files && svn co https://github.com/cangzair/Public/trunk/aarch64/files && chmod -R 755 files
 echo
 TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
