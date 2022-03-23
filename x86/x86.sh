@@ -45,6 +45,9 @@ curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/x86_index.htm > .
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
 echo
+TIME y "添加自定义配置"
+rm -rf files && svn co https://github.com/cangzair/Public/trunk/x86/files && chmod -R 755 files
+echo
 TIME y "添加 gd772 Package"
 rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd772
 echo
