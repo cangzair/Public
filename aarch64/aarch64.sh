@@ -188,7 +188,7 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-aria2/luasrc/controll
 TIME b "调整 硬盘休眠 到 存储 菜单"
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/controller/hd_idle.lua
 TIME l "调整完成"
-echo
+#echo
 #TIME y "更新固件 编译日期"
 #sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 echo
