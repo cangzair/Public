@@ -5,14 +5,13 @@ config samba
 	option description 'Samba on OpenWRT'
 	option homes '0'
 	option macos '0'
-	option name 'N1'
+	option name 'OpenWRT'
 
 config sambashare
 	option read_only 'no'
 	option guest_ok 'yes'
 	option inherit_owner 'yes'
 	option create_mask '0777'
-	option path '/mnt/mmcblk2p4'
-	option name 'mmcblk2p4'
+	option path '/tmp'
+	option name 'tmp'
 	option force_root '0'
-
