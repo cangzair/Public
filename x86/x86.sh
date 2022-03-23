@@ -40,9 +40,9 @@ echo
 TIME b "修改 默认IP为 192.168.123.254"
 sed -i "s/192.168.1.1/192.168.123.254/g" package/base-files/files/bin/config_generate
 TIME b "修改 系统文件..."
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
-curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
+curl -fsSL https://github.com/cangzair/Public/trunk/x86/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://github.com/cangzair/Public/trunk/x86/x86_index.htm > ./package/lean/autocore/files/x86/index.htm
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/udpxy.lua > ./feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 TIME b "系统文件 修改完成"
 echo
 TIME y "添加自定义配置"
@@ -53,14 +53,14 @@ rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd77
 echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/shadowsocksr.lua > ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/shadowsocksr.lua > ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/aarch64/passwall.lua > ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
+curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/passwall.lua > ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
 echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
