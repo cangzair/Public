@@ -80,6 +80,8 @@ Diy_all() {
 
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	git clone https://github.com/281677160/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
+	sed -i 's/"定时更新"/"更新固件"/g' feeds/luci/applications/luci-app-autoupdate/po/zh-cn/autoupdate.po
+	sed -i 's/定时更新 LUCI/固件更新 LUCI/g' feeds/luci/applications/luci-app-autoupdate/po/zh-cn/autoupdate.po
 	[[ -f "${PATH1}/AutoUpdate.sh" ]] && cp -Rf "${PATH1}"/AutoUpdate.sh package/base-files/files/bin/AutoUpdate.sh
 	[[ -f "${PATH1}/replace.sh" ]] && cp -Rf "${PATH1}"/replace.sh package/base-files/files/bin/replace.sh
 fi
@@ -303,10 +305,6 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	fi
 	TIME b "固件版本: ${Openwrt_Version}"
 	TIME b "云端路径: ${Github_UP_RELEASE}"
-	TIME g "《编译成功后，会自动把固件发布到指定地址，然后才会生成云端路径》"
-	TIME g "《普通的那个发布固件跟云端的发布路径是两码事，如果你不需要普通发布的可以不用打开发布功能》"
-	TIME g "修改IP、DNS、网关或者在线更新，请输入命令：openwrt"
-	echo
 else
 	echo
 fi
