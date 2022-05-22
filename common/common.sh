@@ -79,7 +79,7 @@ rm -rf feeds/luci/themes
 Diy_all() {
 
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
-	git clone https://github.com/281677160/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
+	git clone https://github.com/gd0772/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
 	sed -i 's/"定时更新"/"更新固件"/g' feeds/luci/applications/luci-app-autoupdate/po/zh-cn/autoupdate.po
 	sed -i 's/定时更新 LUCI/固件更新 LUCI/g' feeds/luci/applications/luci-app-autoupdate/po/zh-cn/autoupdate.po
 	[[ -f "${PATH1}/AutoUpdate.sh" ]] && cp -Rf "${PATH1}"/AutoUpdate.sh package/base-files/files/bin/AutoUpdate.sh
