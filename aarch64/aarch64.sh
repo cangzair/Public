@@ -1,5 +1,4 @@
 #!/bin/bash
-# https://github.com/gd0772/AutoBuild-OpenWrt
 # common Module by gd772
 
 TIME() {
