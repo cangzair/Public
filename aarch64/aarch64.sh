@@ -28,17 +28,13 @@ rm -rf ./feeds/luci/themes/luci-theme-netgear
 rm -rf ./feeds/luci/themes/luci-theme-material
 TIME r "删除重复插件"
 rm -rf ./feeds/packages/net/smartdns
-rm -rf ./feeds/packages/admin/netdata
-rm -rf ./feeds/luci/applications/luci-app-netdata
 rm -rf ./feeds/luci/applications/luci-app-jd-dailybonus
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 rm -rf ./feeds/luci/applications/luci-app-usb-printer
 rm -rf ./feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/applications/luci-app-unblockmusic
-rm -rf ./feeds/luci/applications/luci-app-samba4
 rm -rf ./feeds/luci/applications/luci-app-aliyundrive-fuse
 echo
-./scripts/feeds update -a
 TIME b "修改 默认IP为 192.168.123.2"
 sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
 TIME b "修改 主机名为 N1"
@@ -56,23 +52,20 @@ rm -rf package/gd772 && git clone https://github.com/gd0772/package package/gd77
 echo
 TIME y "添加 SSR Plus+"
 git clone https://github.com/fw876/helloworld package/gd772/ssrplus
-curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/shadowsocksr.lua > ./package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+sed -i '12a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 echo
 TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
 git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
-#curl -fsSL https://raw.githubusercontent.com/cangzair/Public/main/passwall.lua > ./package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
 echo
 TIME y "添加 Pass wall2"
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/gd772/passwall2
+sed -i '16a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/passwall2/luci-app-passwall2/luasrc/controller/passwall2.lua
 echo
 TIME y "添加 Hello World"
 git clone https://github.com/jerrykuku/luci-app-vssr package/gd772/luci-app-vssr
-echo
-TIME y "添加 京东签到"
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/gd772/luci-app-jd-dailybonus
 echo
 TIME y "添加 SmartDNS"
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/gd772/luci-app-smartdns
@@ -87,7 +80,6 @@ git clone https://github.com/tty228/luci-app-serverchan.git ./package/gd772/luci
 echo
 TIME y "汉化 实时监控"
 rm -rf ./feeds/luci/applications/luci-app-netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./feeds/luci/applications/luci-app-netdata
-rm -rf ./feeds/packages/admin/netdata && svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
 echo
 TIME y "添加 Dockerman"
 rm -rf package/gd772/luci-app-dockerman && svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/gd772/luci-app-dockerman
@@ -104,12 +96,10 @@ sed -i 's/msgstr "Web 管理"/msgstr "Web"/g' feeds/luci/applications/luci-app-w
 sed -i 's/TTYD 终端/命令行/g' feeds/luci/applications/luci-app-ttyd/po/zh-cn/terminal.po
 sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/gd772/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 sed -i 's/PassWall/Pass Wall/g' package/gd772/passwall/luci-app-passwall/po/zh-cn/passwall.po
-sed -i 's/msgstr "PassWall 2"/msgstr "PassWall2"/g' package/gd772/passwall2/luci-app-passwall2/po/zh-cn/passwall.po
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' feeds/luci/applications/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 sed -i 's/iKoolProxy 滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/controller/*.lua
 sed -i 's/iKoolProxy滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/model/cbi/koolproxy/*.lua
 sed -i 's/iKoolProxy 滤广告/iKP去广告/g' package/gd772/luci-app-ikoolproxy/luasrc/view/koolproxy/*.htm
-sed -i 's/京东签到服务/京东签到/g' package/gd772/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
 sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/g' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
 sed -i 's/msgstr "UPnP"/msgstr "UPnP设置"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
 sed -i 's/Frp 内网穿透/Frp 客户端/g' feeds/luci/applications/luci-app-frpc/po/zh-cn/frp.po
@@ -145,8 +135,7 @@ TIME b "重命名 完成"
 #sed -i 's/invalid/## invalid/g' feeds/packages/net/samba4/files/smb.conf.template
 echo
 TIME b "菜单调整..."
-#TIME b "调整 网络共享 到 存储菜单"
-#sed -i 's/\"services\"/\"nas\"/g' feeds/luci/applications/luci-app-samba4/luasrc/controller/samba4.lua
+echo
 TIME b "调整 分流助手 到 网络菜单"
 sed -i 's/\"services\"/\"network\"/g' feeds/luci/applications/luci-app-mwan3helper/luasrc/controller/mwan3helper.lua
 curl -fsSL https://raw.githubusercontent.com/gd0772/patch/main/mwan3helper_status.htm > ./feeds/luci/applications/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
@@ -210,12 +199,7 @@ TIME b "调整 硬盘休眠 到 存储 菜单"
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/luasrc/controller/hd_idle.lua
 TIME l "调整完成"
 echo
-#TIME y "更新固件 编译日期"
-#sed -i "s/2021.10.01/$(TZ=UTC-8 date "+%Y.%m.%d")/g" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-echo
-TIME g "自定义文件修复权限"
+TIME g "自定义文件权限修复"
 chmod -R 755 package/gd772
 echo
-TIME g "更新配置..."
-./scripts/feeds install -a
 TIME g "配置更新完成"
