@@ -167,18 +167,18 @@ sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/p
 sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/rule/*.htm
 sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall/luasrc/view/passwall/server/*.htm
 TIME b "调整 Pass Wall 2 到 GFW 菜单"
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/api/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/model/cbi/passwall2/server/api/*.lua
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/auto_switch/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
-sed -i 's/services/vpn/g' package/gd772/passwall2/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/model/cbi/passwall2/api/*.lua
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/model/cbi/passwall2/server/api/*.lua
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/auto_switch/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
+sed -i 's/services/vpn/g' package/gd772/passwall/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
 TIME b "调整 Hello World 到 GFW 菜单"
 sed -i 's/services/vpn/g' package/gd772/luci-app-vssr/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/gd772/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
