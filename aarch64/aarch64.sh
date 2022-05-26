@@ -57,10 +57,14 @@ TIME y "添加 小猫咪"
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/gd772/luci-app-openclash
 echo
 TIME y "添加 Pass wall"
-git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall && git clone -b luci https://github.com/xiaorouji/openwrt-passwall && mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall package/gd772/passwall
+git clone -b luci https://github.com/xiaorouji/openwrt-passwall
+mv openwrt-passwall/luci-app-passwall package/gd772/passwall && rm -rf openwrt-passwall
+sed -i '18a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/passwall/luci-app-passwall/luasrc/controller/passwall.lua
 echo
 TIME y "添加 Pass wall2"
 git clone https://github.com/xiaorouji/openwrt-passwall2 package/gd772/passwall2
+mv package/gd772/passwall2/luci-app-passwall2 package/gd772/passwall/luci-app-passwall2 && rm -r package/gd772/passwall2
 sed -i '16a entry({"admin", "vpn"}, firstchild(), "GFW", 45).dependent = false' package/gd772/passwall2/luci-app-passwall2/luasrc/controller/passwall2.lua
 echo
 TIME y "添加 Hello World"
